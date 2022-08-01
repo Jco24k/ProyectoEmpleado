@@ -1,0 +1,228 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600);
+body {
+  font-family: "Lato";
+  font-size: 100%;
+  overflow-y: scroll;
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: #fefefe;
+}
+
+span,a{
+  text-decoration: none !important;
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+  color: #fff !important;
+}
+a:hover {
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+
+.app {
+  height: 100vh;
+  width: 20%;
+}
+
+/* -------------
+Sidebar
+----------------*/
+.sidebar {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  overflow: hidden;
+  background-color: #19222a;
+  -webkit-transform: translateZ(0);
+  visibility: visible;
+  -webkit-backface-visibility: hidden;
+}
+.sidebar header {
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  padding: 0.75em 1em;
+}
+
+/* -------------
+Sidebar Nav
+----------------*/
+.sidebar-nav {
+  position: fixed;
+  background-color: #19222a;
+  height: 100%;
+  font-weight: 400;
+  font-size: 1.2em;
+  overflow: auto;
+  padding-bottom: 6em;
+  z-index: 9;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* -------------
+  Chev elements
+  ----------------*/
+  /* -------------
+  Nav-Flyout
+  ----------------*/
+  /* -------------
+  Hover
+  ----------------*/
+}
+.sidebar-nav ul {
+  list-style: none;
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+.sidebar-nav ul li {
+  margin-left: 0;
+  padding-left: 0;
+  display: inline-block;
+  width: 100%;
+  /* -------------
+  Sidebar: icons
+  ----------------*/
+}
+.sidebar-nav ul li .iconos {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9em;
+  padding: 1.05em 1em;
+  position: relative;
+  display: inline-block;
+}
+.sidebar-nav ul li a:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+.sidebar-nav ul li i {
+  font-size: 1.8em;
+  padding-right: 0.5em;
+  width: 9em;
+  display: inline;
+  vertical-align: middle;
+}
+.sidebar-nav > ul > li > a:after {
+  font-family: ionicons;
+  font-size: 0.5em;
+  width: 10px;
+  color: #fff;
+  position: absolute;
+  right: 0.75em;
+  top: 45%;
+}
+.sidebar-nav .nav-flyout {
+  position: absolute;
+  background-color: #080d11;
+  z-index: 9;
+  left: 5.2em;
+  top: 0;
+  height: 100vh;
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.sidebar-nav .nav-flyout a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.sidebar-nav ul > li:hover .nav-flyout {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+
+.menu{
+    display: flex;
+    justify-content: space-between;
+}
+
+.principal{
+    width: 80%;
+}
+
+#filtrar-tabla{
+    width: 30%;
+    padding-left: 10px;
+    margin: 10px 0px;
+}
+.mensaje{
+  text-align: center;
+  font-family: fangsong;
+  color: grey;
+  font-size: larger;
+  margin-top: 20px;
+}
+
+.box-btns{
+  background-color: #1d3557;
+  color: #fff;
+  font-weight: bold;
+  border: #fff 1px solid;
+}
+
+.box-btns:hover{
+  transform: scale(1.1);
+}
+
+.box-buscador{
+  display: flex;
+  margin: 20px 0px;
+  justify-content: left;
+}
+.box-buscar{
+  display: inline-block;
+    color: #fff;
+    background-color: black;
+    border-radius: 30px;
+    width: 120px;
+    margin: 0px 10px;
+}
+.box-buscar:hover{
+  transform: scale(1.1);
+}
+
+#box-buscar-btnes{
+  margin-left: 10%;
+}
+
+#nombre-buscar{
+  width: 40%;
+  display: inline-block;
+}
+#codigo{
+  display: none;
+}
+
+.box-title{
+  margin: 0px;
+  text-align: center;
+}
+
+.box__bus{
+  width: 300px;
+  margin-right: 30px;
+  font-size: 18px;
+}
+

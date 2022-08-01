@@ -1,0 +1,84 @@
+
+.box-lbl{
+    display: block;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+.title{
+    display: block;
+    margin-top: 4%;
+    text-align: center;
+    font-variant: small-caps;
+    font-family: fantasy;
+    font-size: 50px;
+}
+
+.box-atributo{
+    margin: 5px 20px;
+    width: 40% !important;
+}
+
+.box-atributo .box-input{
+    width: 100%;
+}
+
+.box-input:focus{
+    outline: 1px none;
+}
+
+.centrar-frm{
+    margin: 0% auto;
+    width: 70%;
+}
+.box-centrar{
+    justify-content: center;
+}
+.mensaje-incorrecto{
+    font-size: 12px;
+    text-align: center;
+    margin: 2px 20px;
+}
+
+.box-enviar{
+    padding: 0px 50px 20px;
+    text-align: center;
+    width: 40% !important;
+}
+.formulario__btn {
+	height: 45px;
+	line-height: 45px;
+	width: 100%;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+}
+
+.formulario__btn:hover {
+	box-shadow: 3px 0px 30px rgb(107, 107, 107);
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+
+.input-incorrecto{
+    border: 2px solid red;
+}
+
+.input-correcto{
+    border: 2px solid green;
+}
+
+.box-incorrecto{
+	color: red;
+	text-align: center;
+    visibility: visible;
+}
+
+.box-correcto{
+    visibility: hidden;
+}
+

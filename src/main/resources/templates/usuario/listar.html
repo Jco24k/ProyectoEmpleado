@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeLeaf.org"
+	>
+<head th:replace="layout/header :: head">
+    
+    <title>Listar Medico</title>
+</head>
+
+<body>
+	<nav th:replace="layout/header :: nav"></nav>
+    <br>
+    <div class="container">
+        <main>
+            <div class="container mt-3">
+                <div class="alert alert-primary">
+                    <h3 class="box-title text-center">LISTADO DE EMPLEADOS</h3>
+                  </div>
+                <div class="box-buscador">
+                
+                    <form th:action="@{/listar/usuario/buscar}">
+                        <input type="text" name="nombre" id="nombre" placeholder="Digite el nombre del usuario"
+                            autocomplete="off"
+                            th:value="${buscar}"
+                            class="box__bus">
+                            <input type="submit" id="btn-buscar" class="box-buscar" value="Buscar">
+                            <button  id="btn-cancelar" class="box-buscar"><a th:href="@{/listar/usuario}" >
+                                Cancelar
+                                </a></button>
+                    </form>
+                </div>
+                <table class="table table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>NOMBRES</th>
+                            <th>APELLIDOS</th>
+                            <th>DNI</th>
+                            <th>TELEFONO</th>
+                            <th>ROL</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+				<tr th:each="user: ${usuarios}">
+
+					<td th:text="${user.nombres}"></td>
+					<td th:text="${user.app +' '+user.apm}"></td>
+					<td th:text="${user.dni}"></td>
+					<td th:text="${user.tel}"></td>
+					<td th:text="${user.rol.descripcion}"></td>
+					<td>
+						<button class="box-btns"><a th:href="@{/ver/usuario/}+${user.id}">
+						Detalle
+						</a></button>
+						<button class="box-btns"><a th:href="@{/formulario/usuario/}+${user.id}" >
+						Actualizar
+						</a></button>
+						<button class="box-btns">
+							<a th:href="@{/eliminar/usuario/}+${user.id}" 
+							onclick="return confirm('¿Está seguro de eliminar?');">
+							Eliminar
+							</a>
+						</button>
+					</td>
+					
+				</tr>
+			</tbody>
+                    
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script th:src="@{/javascript/buscador.js}"></script>
+</body>
+
+</html>

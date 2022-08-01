@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="layout/header :: head">
+    <title>Registrar Usuario</title>
+</head>
+<body>
+    <nav th:replace="layout/header :: nav"></nav>
+    <br>
+    <div class="container">
+        <div class="card border-primary">
+            <div class="card-header">
+                <div class="alert alert-primary m-1">
+                    <h3 class="text-center" th:text="${titulo}">Registrar Usuario</h3>
+                    <p th:text="${mensaje}" class="text-center" style="color: blue;"><p>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form method="post" th:object="${usuario}" th:action="@{/formulario/usuario}" 
+                enctype="multipart/form-data">
+                    <h6>Datos Personales</h6>
+                    <div class="row m-3">
+                        <div class="col">
+                            <label for="nom" class="from-label">Nombres:</label>
+                            <input type="text" class="form-control box-input" placeholder="Digite tu nombre" id="nom"
+                                name="nom" tabindex="1" required th:field="*{nombres}" autocomplete="off">
+                            <div  th:if="${#fields.hasErrors('nombres') == false}"  id="mensaje-incorrecto-nom" class="msj-color">
+                            </div>
+                             <div th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}" id="mensaje-incorrecto-nom" class="msj-color">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="dni" class="from-label">DNI:</label>
+                            <input type="number" class="form-control box-input" placeholder="Digite tu dni" id="dni"
+                                name="dni" tabindex="2" required th:field="*{dni}" autocomplete="off">
+                            <div th:if="${#fields.hasErrors('dni') == false && dni_existente == null}" id="mensaje-incorrecto-dni" class="msj-color" >
+                                &nbsp;
+                            </div>
+                            <div th:if="${#fields.hasErrors('dni') && dni_existente == null}" th:errors="*{dni}" id="mensaje-incorrecto-dni" class="msj-color">
+                            </div>
+                            <div th:if="${dni_existente != null}" th:text="${dni_existente}" id="mensaje-incorrecto-dni" class="msj-color">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col">
+                            <label for="app" class="from-label">Apellido Paterno:</label>
+                            <input type="text" class="form-control box-input" placeholder="Digite tu apellido" id="app"
+                                name="app" tabindex="3" required th:field="*{app}" autocomplete="off">
+                            <div th:if="${#fields.hasErrors('app') == false}" id="mensaje-incorrecto-app" class="msj-color">
+                                &nbsp;
+                            </div>
+                            <div th:if="${#fields.hasErrors('app')}" th:errors="*{app}" id="mensaje-incorrecto-app" class="msj-color">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="apm" class="from-label">Apellido Materno:</label>
+                            <input type="text" class="form-control box-input" placeholder="Digite tu apellido" id="apm"
+                                name="apm" tabindex="4" required th:field="*{apm}" autocomplete="off">
+                            <div th:if="${#fields.hasErrors('apm') == false}" id="mensaje-incorrecto-apm" class="msj-color">
+                                &nbsp;
+                            </div>
+                            <div th:if="${#fields.hasErrors('app')}" th:errors="*{app}" id="mensaje-incorrecto-apm" class="msj-color">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col">
+                            <label for="fecha" class="from-label">Fecha de Nacimiento:</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha" tabindex="5" required
+                            th:field="*{fecha}" autocomplete="off"
+                            >
+                        </div>
+                        <div class="col">
+                            <label for="rol" class="from-label">Rol:</label>
+                            <select class="form-select" id="rol" name="rol" required tabindex="6">
+                                <option th:each=" rol : ${roles}" th:text="${rol.descripcion}" th:value="${rol.id}"
+                                ></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col">
+                            <label for="tel" class="from-label">Telefono:</label>
+                            <input type="number" class="form-control box-input" placeholder="Digite tu telefono" id="tel"
+                                name="tel" tabindex="7" required 
+                                th:field="*{tel}" autocomplete="off"
+                                >
+                            <div  th:if="${#fields.hasErrors('tel') == false}" id="mensaje-incorrecto-tel" class="msj-color">
+                                &nbsp;
+                            </div>
+                            <div th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" id="mensaje-incorrecto-tel" class="msj-color">
+                            </div>
+                        </div>  
+                        <div class="col">
+                            <label for="file" class="from-label">Foto:</label>
+                            <input type="file" name="file" class="form-control" 
+                                id="file" tabindex="8">
+                            <div th:if="${tipo_foto == null}" id="mensaje-incorrecto-file" class="msj-color">
+                                &nbsp;
+                            </div>
+                            <div th:if="${tipo_foto != null}" th:text="${tipo_foto}" id="mensaje-incorrecto-file" class="msj-color">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col">
+                            <label for="correo" class="from-label">Correo:</label>
+                            <input type="email" class="form-control" placeholder="Digite tu Correo" id="correo"
+                                name="correo" tabindex="7" required th:field="*{correo}" autocomplete="off">
+                            <div th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" id="mensaje-incorrecto-correo" class="msj-color">
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="col">
+                        <label for="rol" class="from-label" >Genero</label>
+                        <select name="genero" id="genero" class="form-select" tabindex="10" required >
+                            <option value="MASCULINO">Masculino</option>
+                            <option value="FEMENINO" >Femenino</option>
+                        </select>
+                    </div>
+                    </div>
+                    <h6>Datos del Sistema</h6>
+                    <div class="row m-3">
+                        <div class="col">
+                            <label for="username" class="from-label">Usuario:</label>
+                            <input type="text" class="form-control box-input" placeholder="Digite tu usuario" id="username"
+                                name="username" tabindex="11" th:field="*{username}" autocomplete="off" required>
+                            <div th:if="${#fields.hasErrors('username') == false}" id="mensaje-incorrecto-username" class="msj-color">
+                                &nbsp;
+                            </div>
+                            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" id="mensaje-incorrecto-username" class="msj-color">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="password" class="from-label">Password:</label>
+                            <input type="password" class="form-control box-input" placeholder="Digite tu contraseña" id="password"
+                                name="password" tabindex="12" th:field="*{password}" autocomplete="off" required>
+                            <div th:if="${#fields.hasErrors('password') == false}"  id="mensaje-incorrecto-password" class="msj-color">
+                                &nbsp;
+                            </div>
+                             <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" id="mensaje-incorrecto-password" class="msj-color">
+                            </div>
+                        </div>
+                         <input type="hidden" id="id" name="id" th:field="*{id}">
+                    </div>
+                    <div class="row m-5">
+                        <div class="col mx-5 mb-3">
+                            <input type="submit" class="btn btn-primary form-control" value="Guardar">
+                        </div>
+                        <div class="col mx-5 mb-3">
+                            <input type="submit" class="btn btn-danger form-control" value="Cancelar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{../javascript/validacion.js}"></script>
+</body>
+
+</html>
